@@ -108,6 +108,15 @@ class WebTablePage(BasePage):
             count -= 1
             return firstname,lastname,email,age,salary,department
 
+    def search_some_person(self,key_word):
+        self.element_is_visible(self.locators.SEARCH_INPUT).send_keys(key_word)
+
+    def check_search_person(self):
+        delete_button = self.element_is_present(self.locators.DELETE_BUTTON)
+        row = delete_button.find_element_by_xpath(self.locators.ROW_PARENT)
+        return row.text.splitslines()
+
+
 
 
 
